@@ -1,0 +1,15 @@
+h2, h5{
+    text-align: center;
+}
+
+h2 {
+    font-size: 180px;
+    margin-top: 60px;
+    color: red;
+}
+
+h5 {
+    margin-top: 10px;
+}
+
+
