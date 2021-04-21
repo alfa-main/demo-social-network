@@ -19,8 +19,8 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
                 <span>About me:</span> {profile.aboutMe}
             </div>
             <div className={s.profile_item}>
-                <span>Contacts:</span> {Object.keys(profile.contacts).map(key => {
-                    if (profile.contacts[key] !== null) return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+                <span>Contacts:</span> {Object.keys(profile.contacts).filter(key => profile.contacts[key] !== null).map(key => {
+                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
                 })}
             </div>
             {isOwner && <div><button className={s.profile_edit} onClick={goToEditMode}>Edit</button></div>}
