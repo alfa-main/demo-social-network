@@ -1,2 +1,78 @@
+.post {
+    display: block;
+    max-width: 500px;
+    margin-top: 10px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
 
+.post .post_img,
+.post .post_title,
+.post .post_message,
+.post .post_likes{
+    margin-top: 10px;
+}
+
+.post .post_title {
+    font-size: 24px;
+    text-align: center;
+}
+
+.post .post_message {
+    line-height: 20px;
+    font-size: 16px;
+    white-space: pre-wrap;
+}
+
+.post .post_likes{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #494B4D;
+    padding-top: 10px;
+}
+
+.post .post_likes button {
+    background-color: #1C4165;
+    color: #fff;
+    width: 50px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    transition: ease 0.3s;
+}
+
+.post .post_img img {
+    display: block;
+    max-width: 500px;
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+.post_delete {
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    background: #1c1e21;
+    color: #fff;
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    transition: ease 0.3s;
+}
+
+.post_delete:hover {
+    background-color: #494B4D;
+}
+
+.post .post_likes button.background_red {
+    background-color: #9C3518;
+}
+
+.post .post_img img.hide {
+    display: none;
+}
 

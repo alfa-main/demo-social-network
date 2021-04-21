@@ -1,0 +1,57 @@
+.posts_create h2 {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.posts_item {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.posts_title,
+.posts_image {
+    margin-top: 10px;
+}
+
+.posts_form  input,
+.posts_form  textarea,
+.posts_form  button{
+    min-width: 400px;
+    min-height: 30px;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.posts_form  textarea {
+    max-height: 100px;
+    height: 100%;
+    padding: 10px;
+    resize: none;
+    margin-top: 80px;
+}
+
+.posts_form  button {
+    display: block;
+    margin: 40px auto;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.posts_form  button:hover {
+    transform: scale(1.1);
+}
+
+.posts_validate {
+    border: 2px solid red;
+    padding: 10px;
+}
+
+.posts_validate.hide {
+    display: none;
+}
