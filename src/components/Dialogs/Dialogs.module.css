@@ -1,17 +1,40 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    color: #fff;
 }
 
 .dialogs_items {
     padding: 10px;
+    line-height: 40px;
 }
 
 .dialogs_items .active {
     color: gold;
 }
 
-.messages {
+.dialogs_message textarea {
+    border: none;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 10px;
+    min-width: 300px;
+    height: 50px;
     padding: 10px;
+    resize: none;
+    margin-top: 10px;
 }
 
+.dialogs_send button {
+    border: none;
+    outline: none;
+    max-width: 80px;
+    width: 100%;
+    line-height: 30px;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+
+.dialogs_send button:hover {
+    transform: scale(1.2);
+}

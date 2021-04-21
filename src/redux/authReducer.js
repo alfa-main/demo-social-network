@@ -50,7 +50,6 @@ export const login = (email, password, rememberMe, captcha) => async (dispatch) 
     }
     else {
         if (response.data.resultCode === 10) {
-            debugger;
             dispatch(getCaptchaUrl())
         }
         const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";

@@ -3,27 +3,27 @@ import s from './ProfileData.module.css';
 
 const ProfileData = ({ profile, isOwner, goToEditMode }) => {
     return (
-        <div>
-            {isOwner && <div><button onClick={goToEditMode}>Edit</button></div>}
-            <div>
-                Fullname: {profile.fullName}
+        <div className={s.profile_data}>
+            <div className={s.profile_item}>
+                <span>Fullname:</span> {profile.fullName}
             </div>
-            <div>
-                Looking for a job: {profile.lookingForAJob ? "yes" : "no"}
+            <div className={s.profile_item}>
+                <span>Looking for a job:</span> {profile.lookingForAJob ? "yes" : "no"}
             </div>
             {profile.lookingForAJob &&
-                <div>
-                    My professional skills: {profile.lookingForAJobDescription}
+                <div className={s.profile_item}>
+                    <span>My professional skills:</span> {profile.lookingForAJobDescription}
                 </div>
             }
-            <div>
-                About me: {profile.aboutMe}
+            <div className={s.profile_item}>
+                <span>About me:</span> {profile.aboutMe}
             </div>
-            <div>
-                Contacts: {Object.keys(profile.contacts).map(key => {
+            <div className={s.profile_item}>
+                <span>Contacts:</span> {Object.keys(profile.contacts).map(key => {
                     return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
                 })}
             </div>
+            {isOwner && <div><button className={s.profile_edit} onClick={goToEditMode}>Edit</button></div>}
         </div>
     )
 }

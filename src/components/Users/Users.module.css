@@ -1,6 +1,24 @@
-
+.users {
+    padding: 10px;
+    line-height: 30px;
+}
 
 .users__photo {
     width: 75px;
     height: 75px;
+}
+
+.users__follow {
+    border: none;
+    outline: none;
+    max-width: 80px;
+    width: 100%;
+    line-height: 30px;
+    border-radius: 10px;
+    transition: 0.5s ease;
+    margin-top: 5px;
+}
+
+.users__follow:hover {
+    background-color: #ccc;
 }

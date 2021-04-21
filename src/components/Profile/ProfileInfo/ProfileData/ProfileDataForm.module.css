@@ -1,0 +1,41 @@
+.profile_save{
+    display: block;
+    margin: 20px auto;
+    width: 70px;
+    line-height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.profile_form input,
+.profile_form textarea {
+    border: none;
+    outline: none;
+    display: block;
+    padding: 5px;
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.profile_form textarea {
+    height: 50px;
+    resize: none;
+}
+
+.profile_contacts {
+    margin-top: 10px;
+}
+
+.profile_form{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.contacts_caption {
+    text-align: left;
+    margin-left: 150px;
+    padding-top: 20px;
+}

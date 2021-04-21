@@ -26,16 +26,17 @@ const ProfileInfo = ({ profile, updateStatus, status, isOwner, savePhoto, savePr
   }
   return (
     <div>
-      <div>
-        <img className={s.content_img} src="https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg" alt="icon" />
+      <div className={s.description_block}>
+        <div className={s.description_photo}>
+          <img src={profile.photos.large || userPhoto} alt='large' />
+        </div>
+        <div className={s.description_file}>
+          {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
+        </div>
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
       {editMode ? <ProfileDataForm initialValues={profile} onSubmit={onSubmit} profile={profile} /> :
         <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => { setEditMode(true) }} />}
-      <div className={s.description_block}>
-        <img src={profile.photos.large || userPhoto} alt='large' />
-        {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
-        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
-      </div>
     </div>
   );
 }

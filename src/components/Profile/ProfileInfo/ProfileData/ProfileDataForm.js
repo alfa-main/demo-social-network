@@ -10,46 +10,50 @@ const textarea = FormControl('textarea');
 const ProfileDataForm = ({ handleSubmit, profile, error }) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div><button>Save</button></div>
             {error && <div className={formStyles.formSummaryError}>
                 {error}
             </div>}
-            <div>
-                Full name: <Field
+            <div className={s.profile_form}>
+                <p>Full name:</p> <Field
                     type={'text'}
                     component={input}
                     name={"fullName"}
                     placeholder={"Full name"} />
             </div>
-            <div>
-                Looking for a job: <Field
+            <div className={s.profile_form}>
+                <p>Looking for a job:</p> <Field
                     type={'checkbox'}
                     component={input}
                     name={"lookingForAJob"}
                     placeholder={"looking for a job"} />
             </div>
-            <div>
-                My professional skills: <Field
+            <div className={s.profile_form}>
+                <p>My professional skills:</p> <Field
                     component={textarea}
                     name={"lookingForAJobDescription"}
                     placeholder={"My professional skills"} />
             </div>
-            <div>
-                About me: <Field
+            <div className={s.profile_form}>
+                <p>About me:</p> <Field
                     component={textarea}
                     name={"aboutMe"}
                     placeholder={"About me"} />
             </div>
-            <div>
-                Contacts: {Object.keys(profile.contacts).map(key => {
+            <div className={s.profile_form}>
+                <p className={s.contacts_caption}>Contacts:</p> {Object.keys(profile.contacts).map(key => {
                     return <div className={s.contact} key={key}>
-                        {key}:  <Field
-                            type={'text'}
-                            component={input}
-                            name={"contacts." + key}
-                            placeholder={key} />
+                        <div className={s.profile_contacts}>
+                            <span>{key}:</span>  <Field
+                                type={'text'}
+                                component={input}
+                                name={"contacts." + key}
+                                placeholder={key} />
+                        </div>
                     </div>
                 })}
+            </div>
+            <div>
+                <button className={s.profile_save}>Save</button>
             </div>
         </form>
     )

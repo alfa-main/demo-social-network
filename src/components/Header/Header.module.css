@@ -1,6 +1,9 @@
 .header{
   grid-area: h;
-  background-color: #00e673;
+  background-color: #1c1e21;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header img{
@@ -9,7 +12,8 @@
 }
 
 .loginBlock {
-  float: right;
+  color: #ccc;
+  font-size: 18px;
 }
 
 

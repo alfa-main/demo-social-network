@@ -1,0 +1,26 @@
+.profile_data {
+    margin-left: 20px;
+    color: #fff;
+}
+
+.profile_item {
+    line-height: 30px;
+}
+
+.profile_item span {
+    font-weight: bold;
+    font-size: 18px;
+    color: #c0c0c0;
+}
+
+.contact {
+    margin: 10px 0 0 20px;
+    color: #ccc;
+}
+
+.profile_edit {
+    display: block;
+    margin: 10px 0 0 20px;
+    width: 70px;
+    line-height: 30px;
+}

@@ -2,14 +2,17 @@
     margin: 30px;
     width: 1000px;
 }
+
 .pageNumber {
-    color: grey;
-    padding: 2px;
+    color: #fff;
+    padding: 10px;
     border: 1px solid #fff;
 }
 
 .paginator span {
     cursor: pointer;
+    width: 20px;
+    height: 20px;
     padding: 5px;
 }
 
@@ -17,8 +20,9 @@
     margin: 10px;
 }
 
-    
 .pageNumber.selectedPage {
     font-weight: bold;
-    border:2px solid #000;
+    border:2px solid #04c400;
+    color: #04c400;
+    font-weight: normal;
 }

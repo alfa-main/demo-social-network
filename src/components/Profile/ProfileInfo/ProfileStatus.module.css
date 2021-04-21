@@ -1,0 +1,13 @@
+.profile_status {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.status_input {
+    width: 300px;
+    line-height: 30px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+}

@@ -28,7 +28,7 @@ const Dialogs = (props) => {
       <div className={s.dialogs_items}>
         <div>{dialogsElements}</div>
       </div>
-      <div className={s.messages}>
+      <div className={s.dialogs_items}>
         <div>{messagesElements}</div>
         <AddMesageFormRedux onSubmit={addNewMessage} />
       </div>
@@ -39,10 +39,10 @@ const Dialogs = (props) => {
 const AddMesageForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
-      <div>
+      <div className={s.dialogs_message}>
         <Field component={textarea} validate={[requiredField, maxLength50]} name={"newMessageBody"} placeholder={"Enter your message"} />
       </div>
-      <div>
+      <div className={s.dialogs_send}>
         <button>Send</button>
       </div>
     </form>
