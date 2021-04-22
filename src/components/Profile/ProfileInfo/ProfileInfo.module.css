@@ -1,8 +1,20 @@
 .description_block {
   padding: 10px;
+}
+
+.flex_container {
+  display: flex;
+  justify-content: space-evenly
+}
+
+.description_container {
   display: block;
   max-width: 400px;
   margin: 0 auto;
+}
+
+.profile_right {
+  max-width: 400px;
 }
 
 .contact {
@@ -12,4 +24,28 @@
 .description_photo img {
   width: 280px;
   height: 350px;
+}
+
+@media (max-width: 789px) {
+  .flex_container {
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .profile_right {
+    margin-top: 26px;
+  }
+}
+
+@media (max-width: 390px) {
+  .profile_right {
+    width: 200px;
+  }
+  .description_file input {
+    max-width: 150px;
+  }
+  .description_photo img {
+    width: 180px;
+    height: 260px;
+  }
 }

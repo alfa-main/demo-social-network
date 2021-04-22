@@ -12,5 +12,11 @@
     padding: 10px;
 }
 
+@media (max-width: 454px) {
+    .posts h2 {
+        font-size: 26px;
+    }
+  }
+
 
 

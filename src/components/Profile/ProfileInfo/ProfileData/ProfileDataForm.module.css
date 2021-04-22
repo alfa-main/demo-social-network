@@ -10,11 +10,9 @@
 
 .profile_form input,
 .profile_form textarea {
-    border: none;
-    outline: none;
     display: block;
     padding: 5px;
-    width: 60%;
+    width: 100%;
     height: 30px;
     border-radius: 10px;
     margin: 10px auto;

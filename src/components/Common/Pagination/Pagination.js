@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import s from './Pagination.module.css';
 import cn from 'classnames';
 
-let Pagination = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10 }) => {
+let Pagination = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 5 }) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize);
 
     let pages = [];
@@ -19,7 +19,7 @@ let Pagination = ({ totalItemsCount, pageSize, currentPage, onPageChanged, porti
         <div className={s.paginator}>
             <span>
                 {portionNumber > 1
-                    && <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button>}
+                    && <button className={s.btn_prev} onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button>}
             </span>
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -31,7 +31,7 @@ let Pagination = ({ totalItemsCount, pageSize, currentPage, onPageChanged, porti
                 })}
             <span>
                 {portionCount > portionNumber &&
-                    <button onClick={() => { setPortionNumber(portionNumber + 1) }} >NEXT</button>}
+                    <button className={s.btn_next} onClick={() => { setPortionNumber(portionNumber + 1) }} >NEXT</button>}
             </span>
         </div>
     )

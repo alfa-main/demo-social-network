@@ -1,20 +1,13 @@
 .app__wrapper {
-  display: grid;
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
-  grid-template-areas: 
-  "h h"
-  "n c";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  overflow: hidden;
   color: #ccc;
-  /* grid-gap: 10px; */
+  position: relative;
 }
 
 .app__wrapper-content {
-    grid-area: c;
     background-color: #000061;
+    padding: 100px;
 }
 
 a {
@@ -25,6 +18,11 @@ a {
 button, a, input[type="checkbox"] {
   cursor: pointer;
   z-index: 10;
+}
+
+button, input, textarea {
+  outline: none;
+  border: none;
 }
 
 

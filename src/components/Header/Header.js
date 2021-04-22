@@ -6,7 +6,7 @@ const Header = (props) => {
 
   return (
     <header className={s.header}>
-      <img src="https://t3.ftcdn.net/jpg/02/25/10/36/360_F_225103684_9opc6FzD29B5K2YMXlOTR1yuSQQemA4m.jpg" alt="icon" />
+      <img src="https://st2.depositphotos.com/4249533/6729/v/600/depositphotos_67293949-stock-illustration-web-developer.jpg" alt="icon" />
 
       <div className={s.loginBlock}>
         {props.isAuth

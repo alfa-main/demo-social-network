@@ -55,3 +55,86 @@
 .posts_validate.hide {
     display: none;
 }
+
+@media (max-width: 1064px) {
+    .posts_item {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .posts_form  textarea {
+        margin-top: 40px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 986px) {
+    .posts_item {
+        width: 60%;
+    }
+}
+
+@media (max-width: 823px) {
+    .posts_item {
+        width: 70%;
+    }
+}
+
+@media (max-width: 759px) {
+    .posts_item {
+        width: 80%;
+    }
+}
+
+@media (max-width: 759px) {
+    .posts_item {
+        width: 80%;
+    }
+}
+
+@media (max-width: 695px) {
+    .posts_item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 549px) {
+    .posts_form  input,
+    .posts_form  textarea,
+    .posts_form  button{
+        min-width: 300px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 454px) {
+    .posts_create h2 {
+        font-size: 26px;
+    }
+  }
+
+@media (max-width: 444px) {
+    .posts_form  input,
+    .posts_form  textarea,
+    .posts_form  button{
+        min-width: 250px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 390px) {
+    .posts_form  input,
+    .posts_form  textarea,
+    .posts_form  button{
+        min-width: 200px;
+    }
+  }
+
+  @media (max-width: 334px) {
+    .posts_form  input,
+    .posts_form  textarea,
+    .posts_form  button{
+        min-width: 150px;
+    }
+  }  

@@ -1,6 +1,7 @@
 .paginator {
     margin: 30px;
-    width: 1000px;
+    max-width: 1000px;
+    padding: 10px 0 0 200px;
 }
 
 .pageNumber {
@@ -25,4 +26,29 @@
     border:2px solid #04c400;
     color: #04c400;
     font-weight: normal;
+}
+
+@media (max-width: 1100px) {
+    .paginator {
+        padding: 10px 0 0 50px;
+    }
+}
+
+@media (max-width: 664px) {
+    .paginator .btn_next,
+    .paginator .btn_prev {
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+    .paginator .btn_prev {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 664px) {
+    .paginator {
+        padding: 0;
+        margin-left: 0;
+    }
 }

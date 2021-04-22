@@ -76,3 +76,58 @@
     display: none;
 }
 
+@media (max-width: 749px) {
+    .post .post_img img {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 652px) {
+    .post .post_img img {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 596px) {
+    .post .post_img img {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 543px) {
+    .post .post_img img {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 495px) {
+    .post .post_img img {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 444px) {
+    .post .post_img img {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 394px) {
+    .post {
+        width: 200px;
+    }
+}
+
+@media (max-width: 394px) {
+    .post {
+        width: 170px;
+    }
+}
+
+@media (max-width: 334px) {
+    .post {
+        width: 150px;
+    }
+}
+
+

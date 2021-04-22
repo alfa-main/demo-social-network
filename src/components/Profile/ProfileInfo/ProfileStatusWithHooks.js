@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import s from './ProfileStatus.module.css';
 
 const ProfileStatusWithHooks = (props) => {
-
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
 
@@ -11,7 +10,9 @@ const ProfileStatusWithHooks = (props) => {
     }, [props.status]);
 
     const activateEditMode = () => {
-        setEditMode(true);
+        if (props.isOwner) {
+            setEditMode(true);
+        }
     }
 
     const deactivateEditMode = () => {
