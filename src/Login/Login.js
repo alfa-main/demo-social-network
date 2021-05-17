@@ -1,4 +1,3 @@
-import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { FormControl } from '../components/Common/FormControls/FormControls';
 import { requiredField } from '../utils/validator/validators';
@@ -6,6 +5,7 @@ import { login } from '../redux/authReducer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import s from '../components/Common/FormControls/FormControls.module.css';
+import s2 from './Login.module.css';
 
 const inp = FormControl('input')
 
@@ -51,7 +51,7 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <div className={s2.auth__form}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
         </div>
