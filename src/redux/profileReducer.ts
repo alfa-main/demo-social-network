@@ -106,9 +106,9 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
         case SET_STATUS: {
             return { ...state, status: action.status }
         }
-        case SAVE_PHOTO_SUCCESS: {
-            return { ...state, profile: { ...state.profile, photos: action.photos } }
-        }
+        // case SAVE_PHOTO_SUCCESS: {
+        //     return { ...state, profile: { ...state.profile, photos: action.photos } }
+        // }
         case SAVE_PROFILE_SUCCESS: {
             return { ...state, profile: action.profile }
         }
@@ -176,12 +176,12 @@ type SaveProfileSuccessType = {
 }
 export const saveProfileSuccess = (profile: ProfileType):SaveProfileSuccessType  => ({ type: SAVE_PROFILE_SUCCESS, profile });
 
-export const getUserProfile = (userId: number) => async (dispatch: any) => {
+export const getUserProfile = (userId: number | undefined) => async (dispatch: any) => {
     let response = await profileApi.getProfile(userId)
     dispatch(setUserProfile(response.data));
 }
 
-export const getStatus = (userId: number) => async (dispatch: any) => {
+export const getStatus = (userId: number | undefined) => async (dispatch: any) => {
     let response = await profileApi.getStatus(userId);
     dispatch(setStatus(response.data));
 }

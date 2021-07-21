@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from '../../Common/Preloader/Preloader';
-import ProfileStatusWithHooks from './ProfileStatusWithHooks';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks.tsx';
 import userPhoto from '../../../assets/img/images.png';
 import ProfileDataForm from './ProfileData/ProfileDataForm';
 import ProfileData from './ProfileData/ProfileData';
 import cn from 'classnames';
 
-const ProfileInfo = ({ profile, updateStatus, status, isOwner, savePhoto, saveProfile }) => {
+const ProfileInfo = ({ profile, updateStatus, status2, isOwner, savePhoto, saveProfile }) => {
   let [editMode, setEditMode] = useState(false);
 
   if (!profile) {
@@ -39,7 +39,7 @@ const ProfileInfo = ({ profile, updateStatus, status, isOwner, savePhoto, savePr
         <div className={s.description_file}>
           {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
         </div>
-        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner} />
+        <ProfileStatusWithHooks status={status2} updateStatus={updateStatus} isOwner={isOwner} />
       </div>
       <div className={s.profile_right}>
         {editMode ? <ProfileDataForm initialValues={profile} onSubmit={onSubmit} profile={profile} /> :
