@@ -17,12 +17,12 @@ const SAVE_PROFILE_SUCCESS = 'PROFILE/SAVE-PROFILE-SUCCESS';
 
 let initialState = {
     posts: [
-        { id: 1, title: 'My posts', message: 'I want to work propgrammer', image: 'https://image.api.playstation.com/cdn/EP0177/CUSA05674_00/rnnJiqNSkmOAPsSEgv5a5O1m2cFODvuP.png', likesCount: 0, liked: false },
-        { id: 2, title: 'My posts', message: 'I want to work propgrammer ', image: 'https://i.pinimg.com/originals/df/33/ed/df33ed9f3c8eda51084580a19455fef2.jpg', likesCount: 0, liked: false },
-        { id: 3, title: 'My posts', message: 'I want to work propgrammer ', image: 'https://img.pravda.com/images/doc/c/9/c9c3290-haker-12296.jpg', likesCount: 0, liked: false },
-        { id: 4, title: 'My posts', message: 'I want to work propgrammer ', image: 'https://m.iguides.ru/upload/iblock/abe/abe66fd0cf78e016f453ee6b3dd6d0da.jpg', likesCount: 0, liked: false },
-        { id: 5, title: 'My posts', message: 'I want to work propgrammer ', image: 'https://www.anti-malware.ru/files/styles/imagesize400w/public/images/source/news412.png?itok=eNzt1132', likesCount: 0, liked: false },
-        { id: 6, title: 'My posts', message: 'I want to work propgrammer ', image: 'https://habrastorage.org/webt/qm/hw/66/qmhw66hf0z2z4crwrxi6szec6pw.png', likesCount: 0, liked: false },
+        { id: 1, title: 'My posts', message: 'I work programmer', image: 'https://image.api.playstation.com/cdn/EP0177/CUSA05674_00/rnnJiqNSkmOAPsSEgv5a5O1m2cFODvuP.png', likesCount: 0, liked: false },
+        { id: 2, title: 'My posts', message: 'I work programmer ', image: 'https://i.pinimg.com/originals/df/33/ed/df33ed9f3c8eda51084580a19455fef2.jpg', likesCount: 0, liked: false },
+        { id: 3, title: 'My posts', message: 'I work programmer ', image: 'https://img.pravda.com/images/doc/c/9/c9c3290-haker-12296.jpg', likesCount: 0, liked: false },
+        { id: 4, title: 'My posts', message: 'I work programmer ', image: 'https://m.iguides.ru/upload/iblock/abe/abe66fd0cf78e016f453ee6b3dd6d0da.jpg', likesCount: 0, liked: false },
+        { id: 5, title: 'My posts', message: 'I work programmer ', image: 'https://www.anti-malware.ru/files/styles/imagesize400w/public/images/source/news412.png?itok=eNzt1132', likesCount: 0, liked: false },
+        { id: 6, title: 'My posts', message: 'I work programmer ', image: 'https://habrastorage.org/webt/qm/hw/66/qmhw66hf0z2z4crwrxi6szec6pw.png', likesCount: 0, liked: false },
     ] as Array<PostType>,
     newPostMessage: '',
     newPostTitle: '',
@@ -106,9 +106,10 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
         case SET_STATUS: {
             return { ...state, status: action.status }
         }
-        // case SAVE_PHOTO_SUCCESS: {
-        //     return { ...state, profile: { ...state.profile, photos: action.photos } }
-        // }
+        case SAVE_PHOTO_SUCCESS: {
+            // @ts-ignore
+            return { ...state, profile: { ...state.profile, photos: action.photos } }
+        }
         case SAVE_PROFILE_SUCCESS: {
             return { ...state, profile: action.profile }
         }

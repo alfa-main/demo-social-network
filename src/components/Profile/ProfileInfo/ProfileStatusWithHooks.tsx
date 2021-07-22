@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import s from './ProfileStatus.module.css';
 
 type Props = {
-    status2: string,
+    statusUser: string,
     updateStatus: (status: string) => void,
     isOwner: boolean
 }
 
-// type State = {
-//     editMode: boolean,
-//     status: string
-// }
-
-const ProfileStatusWithHooks: React.FC<Props> = ({status2, updateStatus, isOwner}) => {
+const ProfileStatusWithHooks: React.FC<Props> = ({statusUser, updateStatus, isOwner}) => {
     let [editMode, setEditMode] = useState(false);
-    let [status, setStatus] = useState(status2);
+    let [status, setStatus] = useState(statusUser);
 
     useEffect(() => {
-        setStatus(status2)
-    }, [status2]);
+        setStatus(statusUser)
+    }, [statusUser]);
 
     const activateEditMode = () => {
         if (isOwner) {
@@ -40,7 +35,7 @@ const ProfileStatusWithHooks: React.FC<Props> = ({status2, updateStatus, isOwner
             {!editMode
                 ? <div>
                     <span onDoubleClick={activateEditMode}>
-                        {!status2 ? "---" : status2}
+                        {!statusUser ? "---" : statusUser}
                     </span>
                 </div>
                 : <div>

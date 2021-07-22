@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from '../../Common/Preloader/Preloader';
-import ProfileStatusWithHooks from './ProfileStatusWithHooks.tsx';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import userPhoto from '../../../assets/img/images.png';
 import ProfileDataForm from './ProfileData/ProfileDataForm';
 import ProfileData from './ProfileData/ProfileData';
 import cn from 'classnames';
+import { ProfileProps } from '../Profile';
 
-const ProfileInfo = ({ profile, updateStatus, status2, isOwner, savePhoto, saveProfile }) => {
+const ProfileInfo: React.FC<ProfileProps> = ({ profile, updateStatus, statusUser, isOwner, savePhoto, saveProfile }) => {
   let [editMode, setEditMode] = useState(false);
 
   if (!profile) {
     return <Preloader />
   }
 
-  const onMainPhotoSelected = (e) => {
+  const onMainPhotoSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // @ts-ignore
     if (e.target.files.length) {
+      // @ts-ignore
       savePhoto(e.target.files[0]);
     }
   }
 
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: any) => {
     saveProfile(formData).then(() => {
       setEditMode(false);
     });
@@ -39,10 +42,11 @@ const ProfileInfo = ({ profile, updateStatus, status2, isOwner, savePhoto, saveP
         <div className={s.description_file}>
           {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
         </div>
-        <ProfileStatusWithHooks status={status2} updateStatus={updateStatus} isOwner={isOwner} />
+        <ProfileStatusWithHooks statusUser={statusUser} updateStatus={updateStatus} isOwner={isOwner} />
       </div>
       <div className={s.profile_right}>
-        {editMode ? <ProfileDataForm initialValues={profile} onSubmit={onSubmit} profile={profile} /> :
+        {// @ts-ignore
+          editMode ? <ProfileDataForm initialValues={profile} onSubmit={onSubmit} profile={profile} /> :
           <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => { setEditMode(true) }} />}
       </div>
     </div>

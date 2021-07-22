@@ -24,6 +24,7 @@ export type PhotosType = {
 }
 
 export type ProfileType = {
+    aboutMe: string,
     userId: number,
     lookingForAJob: boolean,
     lookingForAJobDescription: string,
@@ -36,6 +37,7 @@ export type UsersType = {
     id: number,
     name: string,
     status: string,
-    photos: PhotosType
+    photos: PhotosType,
+    followed: boolean,
+    uniqueUrlName: string | null;
 }
-
