@@ -10,14 +10,15 @@ import { FormControl } from '../Common/FormControls/FormControls';
 const textarea = FormControl('textarea');
 const maxLength50 = maxLengthCreator(50);
 
-const Dialogs = (props) => {
+const Dialogs = (props: any) => {
 
   let state = props.dialogsPage;
-
+  //@ts-ignore
   let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} />);
+  //@ts-ignore
   let messagesElements = state.messages.map(m => <Message message={m.message} key={m.id} />);
 
-  let addNewMessage = (values) => {
+  let addNewMessage = (values: any) => {
     props.sendMessage(values.newMessageBody);
   }
 
@@ -37,7 +38,7 @@ const Dialogs = (props) => {
     </div>
   );
 }
-
+//@ts-ignore
 const AddMesageForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
@@ -50,7 +51,7 @@ const AddMesageForm = (props) => {
     </form>
   )
 }
-
+//@ts-ignore
 const afterSubmit = (result, dispatch) =>
   dispatch(reset('dialogAddMesageForm'));
 
