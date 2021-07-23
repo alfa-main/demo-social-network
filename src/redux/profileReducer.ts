@@ -7,7 +7,7 @@ const UPDATE_POST_MESSAGE = 'PROFILE/UPDATE-POST-MESSAGE';
 const UPDATE_POST_TITLE = 'PROFILE/UPDATE-POST-TITLE';
 const UPDATE_POST_IMAGE = 'PROFILE/UPDATE-POST-IMAGE';
 const INCREASE_LIKE = 'PROFILE/INCREASE-LIKE';
-const DESCREASE_LIKE = 'PROFILE/DESCREASE-LIKE';
+const DECREASE_LIKE = 'PROFILE/DECREASE-LIKE';
 const DELETE_POST = 'PROFILE/DELETE-POST';
 const SET_USER_PROFILE = 'PROFILE/SET-USER-PROFILE';
 const SET_STATUS = 'PROFILE/SET-STATUS';
@@ -80,7 +80,7 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
                 })
             }
         }
-        case DESCREASE_LIKE: {
+        case DECREASE_LIKE: {
             return {
                 ...state,
                 posts: state.posts.map(post => {
@@ -151,11 +151,11 @@ type IncreaseLikeType = {
 }
 export const increaseLike = (postId: number): IncreaseLikeType => ({ type: INCREASE_LIKE, postId });
 
-type DescreaseLikeType = {
-    type: typeof DESCREASE_LIKE, 
+type DecreaseLikeType = {
+    type: typeof DECREASE_LIKE, 
     postId: number 
 }
-export const descreaseLike = (postId: number): DescreaseLikeType => ({ type: DESCREASE_LIKE, postId });
+export const decreaseLike = (postId: number): DecreaseLikeType => ({ type: DECREASE_LIKE, postId });
 
 type DeletePostType = {
     type: typeof DELETE_POST, 

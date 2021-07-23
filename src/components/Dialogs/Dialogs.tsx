@@ -32,14 +32,14 @@ const Dialogs = (props: any) => {
         </div>
         <div className={s.dialogs_items}>
           <div>{messagesElements}</div>
-          <AddMesageFormRedux onSubmit={addNewMessage} />
+          <AddMessageFormRedux onSubmit={addNewMessage} />
         </div>
       </div>
     </div>
   );
 }
 //@ts-ignore
-const AddMesageForm = (props) => {
+const AddMessageForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div className={s.dialogs_message}>
@@ -53,11 +53,11 @@ const AddMesageForm = (props) => {
 }
 //@ts-ignore
 const afterSubmit = (result, dispatch) =>
-  dispatch(reset('dialogAddMesageForm'));
+  dispatch(reset('dialogAddMessageForm'));
 
-const AddMesageFormRedux = reduxForm({
-  form: "dialogAddMesageForm",
+const AddMessageFormRedux = reduxForm({
+  form: "dialogAddMessageForm",
   onSubmitSuccess: afterSubmit,
-})(AddMesageForm);
+})(AddMessageForm);
 
 export default Dialogs;
