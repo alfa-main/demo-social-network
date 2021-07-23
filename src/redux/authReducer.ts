@@ -1,11 +1,29 @@
-import { ResultCodeForCaptcha } from './../Api/Api';
-import { authApi, ResultCodes, securityApi } from "../Api/Api";
+import { securityApi } from './../Api/security-api';
+import { authApi } from './../Api/auth-api';
+import { ResultCodes, ResultCodeForCaptcha } from "../Api/Api";
 import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_CAPTCHA_URL_SUCCESS = 'SET-CAPTCHA-URL-SUCCESS';
 
 export type InitialStateType = typeof initialState;
+
+type SetAuthUserDataPayloadType = {
+    userId: number | null,
+    email: string | null,
+    login: string | null,
+    isAuth: boolean
+}
+
+type SetAuthUserData = {
+    type: typeof SET_USER_DATA,
+    payload: SetAuthUserDataPayloadType
+}
+
+type GetCaptchaUrlSuccess = {
+    type: typeof SET_CAPTCHA_URL_SUCCESS,
+    payload: {captchaUrl: string}
+}
 
 let initialState = {
     userId: null as number | null,
@@ -28,27 +46,10 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 
-type SetAuthUserDataPayloadType = {
-    userId: number | null,
-    email: string | null,
-    login: string | null,
-    isAuth: boolean
-}
-
-type SetAuthUserData = {
-    type: typeof SET_USER_DATA,
-    payload: SetAuthUserDataPayloadType
-}
-
 export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserData => ({
     type: SET_USER_DATA,
     payload: { userId, email, login, isAuth }
 });
-
-type GetCaptchaUrlSuccess = {
-    type: typeof SET_CAPTCHA_URL_SUCCESS,
-    payload: {captchaUrl: string}
-}
 
 export const getCaptchaUrlSuccess = (captchaUrl: string):GetCaptchaUrlSuccess => ({
     type: SET_CAPTCHA_URL_SUCCESS,

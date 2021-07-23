@@ -23,9 +23,9 @@ let initialState = {
 }
 
 type InitialStateType = typeof initialState;
-
 type DispatchType = Dispatch<ActionsTypes>;
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>;
+type ActionsTypes = InferActionsTypes<typeof actions>;
 
 const usersReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
@@ -70,8 +70,6 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialStateT
             return state;
     }
 }
-
-type ActionsTypes = InferActionsTypes<typeof actions>;
 
 export const actions = {
     followSuccess : (userId: number) => ({ type: FOLLOW, userId } as const),
