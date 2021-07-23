@@ -1,4 +1,5 @@
-import { authApi, securityApi } from "../Api/Api";
+import { ResultCodeForCaptcha } from './../Api/Api';
+import { authApi, ResultCodes, securityApi } from "../Api/Api";
 import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'SET-USER-DATA';
@@ -56,22 +57,22 @@ export const getCaptchaUrlSuccess = (captchaUrl: string):GetCaptchaUrlSuccess =>
 
 export const getAuthUserData = () => async (dispatch: any) => {
     const response = await authApi.authMe();
-    if (response.data.resultCode === 0) {
-        const { id, email, login } = response.data.data;
+    if (response.resultCode === ResultCodes.Success) {
+        const { id, email, login } = response.data;
         dispatch(setAuthUserData(id, email, login, true));
     }
 }
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
     const response = await authApi.login(email, password, rememberMe, captcha)
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === ResultCodes.Success) {
         dispatch(getAuthUserData())
     }
     else {
-        if (response.data.resultCode === 10) {
+        if (response.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
-        const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+        const message = response.messages.length > 0 ? response.messages[0] : "Some error";
         dispatch(stopSubmit('login', { _error: message }));
     }
 }
@@ -79,15 +80,14 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 
 export const logout = () => async (dispatch: any) => {
     const response = await authApi.logout()
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === ResultCodes.Success) {
         dispatch(setAuthUserData(null, null, null, false))
     }
 }
 
 export const getCaptchaUrl = () => async (dispatch: any) => {
     const response = await securityApi.getCaptchaUrl();
-    const captchaUrl = response.data.url;
-    debugger;
+    const captchaUrl = response.url;
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
 

@@ -177,12 +177,12 @@ type SaveProfileSuccessType = {
 }
 export const saveProfileSuccess = (profile: ProfileType):SaveProfileSuccessType  => ({ type: SAVE_PROFILE_SUCCESS, profile });
 
-export const getUserProfile = (userId: number | undefined) => async (dispatch: any) => {
-    let response = await profileApi.getProfile(userId)
+export const getUserProfile = (userId: number) => async (dispatch: any) => {
+    let response = await profileApi.getProfile(userId);
     dispatch(setUserProfile(response.data));
 }
 
-export const getStatus = (userId: number | undefined) => async (dispatch: any) => {
+export const getStatus = (userId: number) => async (dispatch: any) => {
     let response = await profileApi.getStatus(userId);
     dispatch(setStatus(response.data));
 }

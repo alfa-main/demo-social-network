@@ -10,7 +10,7 @@ import { RouteProps } from 'react-router';
 import { ProfileType } from '../../types/types';
 
 type MapDispatchProps = {
-    getUserProfile: (userId: number | undefined) => void,
+    getUserProfile: (userId: number) => void,
     getStatus: (userId: number | undefined) => void,
     updateStatus: (status: string) => void,
     savePhoto: (photo: any) => void,
@@ -75,6 +75,7 @@ let mapStateToProps = (state: AppStateType): MapStateProps => ({
 });
 
 export default compose(
+    //@ts-ignore
     connect<MapStateProps, MapDispatchProps, OwnProps, AppStateType>(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
     withRouter,
     withAuthRedirect

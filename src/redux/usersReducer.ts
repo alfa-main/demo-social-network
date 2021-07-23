@@ -127,10 +127,10 @@ export const requestUsers = (page: number, pageSize: number): ThunkType =>
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
 
-    let response = await usersApi.getUsers(page, pageSize)
+    let response = await usersApi.getUsers(page, pageSize)    
     dispatch(toggleIsFetching(false));
-    dispatch(setUsers(response.data.items));
-    dispatch(setTotalUsersCount(response.data.totalCount));
+    dispatch(setUsers(response.items));
+    dispatch(setTotalUsersCount(response.totalCount));
 }
 
 const _followUnfollowFlow = async (dispatch: DispatchType,
