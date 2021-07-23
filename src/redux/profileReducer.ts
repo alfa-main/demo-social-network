@@ -24,11 +24,11 @@ let initialState = {
         { id: 5, title: 'My posts', message: 'I work programmer ', image: 'https://www.anti-malware.ru/files/styles/imagesize400w/public/images/source/news412.png?itok=eNzt1132', likesCount: 0, liked: false },
         { id: 6, title: 'My posts', message: 'I work programmer ', image: 'https://habrastorage.org/webt/qm/hw/66/qmhw66hf0z2z4crwrxi6szec6pw.png', likesCount: 0, liked: false },
     ] as Array<PostType>,
-    newPostMessage: '',
-    newPostTitle: '',
-    newPostImage: '',
+    newPostMessage: '' as string,
+    newPostTitle: '' as string,
+    newPostImage: '' as string,
     profile: null as ProfileType | null,
-    status: ''
+    status: '' as string
 }
 
 export type InitialStateType = typeof initialState;
@@ -126,51 +126,61 @@ type AddPostType = {
     image: string
 }
 export const addPost = (title: string, message: string, image: string): AddPostType => ({ type: ADD_POST, title, message, image });
+
 type UpdatePostMessage = {
     type: typeof UPDATE_POST_MESSAGE, 
     newPostText: string 
 }
 export const updatePostMessage = (newPostText: string): UpdatePostMessage => ({ type: UPDATE_POST_MESSAGE, newPostText });
+
 type UpdatePostTitle = {
     type: typeof UPDATE_POST_TITLE, 
     newPostTitle: string 
 }
 export const updatePostTitle = (newPostTitle: string): UpdatePostTitle => ({ type: UPDATE_POST_TITLE, newPostTitle });
+
 type UpdatePostImage = {
     type: typeof UPDATE_POST_IMAGE, 
     newPostImage: string 
 }
 export const updatePostImage = (newPostImage: string): UpdatePostImage => ({ type: UPDATE_POST_IMAGE, newPostImage });
+
 type IncreaseLikeType = {
     type: typeof INCREASE_LIKE, 
     postId: number 
 }
 export const increaseLike = (postId: number): IncreaseLikeType => ({ type: INCREASE_LIKE, postId });
+
 type DescreaseLikeType = {
     type: typeof DESCREASE_LIKE, 
     postId: number 
 }
 export const descreaseLike = (postId: number): DescreaseLikeType => ({ type: DESCREASE_LIKE, postId });
+
 type DeletePostType = {
     type: typeof DELETE_POST, 
     postId: number
 }
 export const deletePost = (postId: number): DeletePostType => ({ type: DELETE_POST, postId });
+
 type SetUserProfileType = {
     type: typeof SET_USER_PROFILE,
     profile:  ProfileType
 }
 export const setUserProfile = (profile: ProfileType): SetUserProfileType => ({ type: SET_USER_PROFILE, profile });
+
 type SetStatusType = {
     type: typeof SET_STATUS, 
     status: string
 }
 export const setStatus = (status: string): SetStatusType => ({ type: SET_STATUS, status });
+
 type savePhotoSuccessType = {
     type: typeof SAVE_PHOTO_SUCCESS, 
     photos: PhotosType
 }
 export const savePhotoSuccess = (photos: PhotosType): savePhotoSuccessType => ({ type: SAVE_PHOTO_SUCCESS, photos });
+
 type SaveProfileSuccessType = {
     type: typeof SAVE_PROFILE_SUCCESS,
     profile:  ProfileType

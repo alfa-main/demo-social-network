@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import s from '../components/Common/FormControls/FormControls.module.css';
 import s2 from './Login.module.css';
 
-const inp = FormControl('input')
+const inp = FormControl('input');
 
 const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
     return (
@@ -38,7 +38,6 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
 const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm)
-
 
 const Login = (props) => {
 
