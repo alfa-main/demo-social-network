@@ -1,4 +1,4 @@
-import { profileApi } from "../Api/Api";
+import { profileApi } from "../Api/profile-api";
 import { stopSubmit } from "redux-form";
 import { PostType, ProfileType, PhotosType } from "../types/types";
 
@@ -120,104 +120,104 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
 }
 
 type AddPostType = {
-    type: typeof ADD_POST, 
-    title: string, 
-    message: string, 
+    type: typeof ADD_POST,
+    title: string,
+    message: string,
     image: string
 }
 export const addPost = (title: string, message: string, image: string): AddPostType => ({ type: ADD_POST, title, message, image });
 
 type UpdatePostMessage = {
-    type: typeof UPDATE_POST_MESSAGE, 
-    newPostText: string 
+    type: typeof UPDATE_POST_MESSAGE,
+    newPostText: string
 }
 export const updatePostMessage = (newPostText: string): UpdatePostMessage => ({ type: UPDATE_POST_MESSAGE, newPostText });
 
 type UpdatePostTitle = {
-    type: typeof UPDATE_POST_TITLE, 
-    newPostTitle: string 
+    type: typeof UPDATE_POST_TITLE,
+    newPostTitle: string
 }
 export const updatePostTitle = (newPostTitle: string): UpdatePostTitle => ({ type: UPDATE_POST_TITLE, newPostTitle });
 
 type UpdatePostImage = {
-    type: typeof UPDATE_POST_IMAGE, 
-    newPostImage: string 
+    type: typeof UPDATE_POST_IMAGE,
+    newPostImage: string
 }
 export const updatePostImage = (newPostImage: string): UpdatePostImage => ({ type: UPDATE_POST_IMAGE, newPostImage });
 
 type IncreaseLikeType = {
-    type: typeof INCREASE_LIKE, 
-    postId: number 
+    type: typeof INCREASE_LIKE,
+    postId: number
 }
 export const increaseLike = (postId: number): IncreaseLikeType => ({ type: INCREASE_LIKE, postId });
 
 type DecreaseLikeType = {
-    type: typeof DECREASE_LIKE, 
-    postId: number 
+    type: typeof DECREASE_LIKE,
+    postId: number
 }
 export const decreaseLike = (postId: number): DecreaseLikeType => ({ type: DECREASE_LIKE, postId });
 
 type DeletePostType = {
-    type: typeof DELETE_POST, 
+    type: typeof DELETE_POST,
     postId: number
 }
 export const deletePost = (postId: number): DeletePostType => ({ type: DELETE_POST, postId });
 
 type SetUserProfileType = {
     type: typeof SET_USER_PROFILE,
-    profile:  ProfileType
+    profile: ProfileType
 }
 export const setUserProfile = (profile: ProfileType): SetUserProfileType => ({ type: SET_USER_PROFILE, profile });
 
 type SetStatusType = {
-    type: typeof SET_STATUS, 
+    type: typeof SET_STATUS,
     status: string
 }
 export const setStatus = (status: string): SetStatusType => ({ type: SET_STATUS, status });
 
 type savePhotoSuccessType = {
-    type: typeof SAVE_PHOTO_SUCCESS, 
+    type: typeof SAVE_PHOTO_SUCCESS,
     photos: PhotosType
 }
 export const savePhotoSuccess = (photos: PhotosType): savePhotoSuccessType => ({ type: SAVE_PHOTO_SUCCESS, photos });
 
 type SaveProfileSuccessType = {
     type: typeof SAVE_PROFILE_SUCCESS,
-    profile:  ProfileType
+    profile: ProfileType
 }
-export const saveProfileSuccess = (profile: ProfileType):SaveProfileSuccessType  => ({ type: SAVE_PROFILE_SUCCESS, profile });
+export const saveProfileSuccess = (profile: ProfileType): SaveProfileSuccessType => ({ type: SAVE_PROFILE_SUCCESS, profile });
 
 export const getUserProfile = (userId: number) => async (dispatch: any) => {
     let response = await profileApi.getProfile(userId);
-    dispatch(setUserProfile(response.data));
+    dispatch(setUserProfile(response));
 }
 
 export const getStatus = (userId: number) => async (dispatch: any) => {
     let response = await profileApi.getStatus(userId);
-    dispatch(setStatus(response.data));
+    dispatch(setStatus(response));
 }
 
 export const updateStatus = (status: string) => async (dispatch: any) => {
     let response = await profileApi.updateStatus(status);
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === 0) {
         dispatch(setStatus(status));
     }
 }
 
 export const savePhoto = (file: any) => async (dispatch: any) => {
     let response = await profileApi.savePhoto(file);
-    if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos));
+    if (response.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.photos));
     }
 }
 
 export const saveProfile = (profile: ProfileType) => async (dispatch: any) => {
     let response = await profileApi.saveProfile(profile);
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === 0) {
         dispatch(saveProfileSuccess(profile));
     } else {
-        dispatch(stopSubmit('editProfile', { _error: response.data.messages[0] }));
-        return Promise.reject(response.data.messages[0]);
+        dispatch(stopSubmit('editProfile', { _error: response.messages[0] }));
+        return Promise.reject(response.messages[0]);
     }
 }
 

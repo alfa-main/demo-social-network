@@ -1,5 +1,5 @@
 import { UsersType } from "../types/types"
-import { instance, ResultCodes } from "./Api"
+import { instance } from "./Api"
 
 type GetUsers = {
     items: Array<UsersType>,
@@ -7,20 +7,20 @@ type GetUsers = {
     error: string
 }
 
-type UnfollowUsersType = {
-    resultCode: ResultCodes,
-    messages: Array<string>,
-    data: any
-}
+// type UnfollowUsersType = {
+//     resultCode: ResultCodes,
+//     messages: Array<string>,
+//     data: any
+// }
 
 export const usersApi = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instance.get<GetUsers>(`users?page=${currentPage}&count=${pageSize}`)
-        .then(response => response.data)
+            .then(response => response.data)
     },
     unfollowUsers(usersId: number) {
-        return instance.delete<UnfollowUsersType>(`follow/${usersId}`)
-        .then(response => response.data)
+        return instance.delete(`follow/${usersId}`)
+            .then(response => response.data)
     },
     followUsers(usersId: number) {
         return instance.post(`follow/${usersId}`)

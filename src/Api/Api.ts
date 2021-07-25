@@ -23,3 +23,9 @@ export type GetItemsType = {
     totalCount: number,
     error: string
 }
+
+export type ResponseType<D = {}, RC = ResultCodes> = {
+    data: D,
+    messages: Array<string>,
+    resultCode: RC
+}

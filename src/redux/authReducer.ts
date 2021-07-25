@@ -22,7 +22,7 @@ type SetAuthUserData = {
 
 type GetCaptchaUrlSuccess = {
     type: typeof SET_CAPTCHA_URL_SUCCESS,
-    payload: {captchaUrl: string}
+    payload: { captchaUrl: string }
 }
 
 let initialState = {
@@ -51,7 +51,7 @@ export const setAuthUserData = (userId: number | null, email: string | null, log
     payload: { userId, email, login, isAuth }
 });
 
-export const getCaptchaUrlSuccess = (captchaUrl: string):GetCaptchaUrlSuccess => ({
+export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccess => ({
     type: SET_CAPTCHA_URL_SUCCESS,
     payload: { captchaUrl }
 });
