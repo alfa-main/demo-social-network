@@ -5,7 +5,7 @@ import { logout } from '../../redux/authReducer';
 import { AppStateType } from '../../redux/redux-store';
 
 type MapDispatchProps = {
-    logout: (userId: number) => number,
+    logout: any,
 }
 
 type MapStateProps = {
@@ -28,5 +28,5 @@ let mapStateToProps = (state: AppStateType): MapStateProps => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login
 });
-// @ts-ignore
+
 export default connect<MapStateProps, MapDispatchProps, OwnProps, AppStateType>(mapStateToProps, { logout })(HeaderContainer);

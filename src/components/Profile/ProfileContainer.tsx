@@ -74,7 +74,7 @@ let mapStateToProps = (state: AppStateType): MapStateProps => ({
     isAuth: state.auth.isAuth
 });
 
-export default compose(
+export default compose<React.ComponentType>(
     //@ts-ignore
     connect<MapStateProps, MapDispatchProps, OwnProps, AppStateType>(mapStateToProps, { getUserProfile, getStatus, saveProfile, savePhoto, updateStatus, ...actions }),
     withRouter,

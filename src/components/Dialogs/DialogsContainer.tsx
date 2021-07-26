@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../hoc/AuthRedirect';
 import { compose } from 'redux';
 import { AppStateType } from '../../redux/redux-store';
+import React from 'react';
 
 type MapDispatchProps = {
   
@@ -15,7 +16,6 @@ type MapStateProps = {
 
 type OwnProps = {}
 
-type Props = MapStateProps & MapDispatchProps;
 
 let mapStateToProps = (state: AppStateType): MapStateProps => {
   return {
@@ -23,15 +23,7 @@ let mapStateToProps = (state: AppStateType): MapStateProps => {
   }
 }
 
-let mapDispatchToProps = (dispatch: any) => {
-  return {
-    sendMessage: (newMessageBody: string) => {
-      dispatch(actions.sendMessageActionCreator(newMessageBody));
-    }
-  }
-}
-
-export default compose(
-  connect<MapStateProps, MapDispatchProps, OwnProps, AppStateType>(mapStateToProps, mapDispatchToProps),
+export default compose<React.ComponentType>(
+  connect<MapStateProps, MapDispatchProps, OwnProps, AppStateType>(mapStateToProps, {...actions}),
   withAuthRedirect
 )(Dialogs);
