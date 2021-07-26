@@ -27,7 +27,7 @@ const Post = (props) => {
 
       <div className={s.post_likes}>
         {props.post.liked ?
-          <button className={s.background_red} onClick={() => { props.descreaseLike(props.post.id) }}>Like</button> :
+          <button className={s.background_red} onClick={() => { props.decreaseLike(props.post.id) }}>Like</button> :
           <button onClick={() => { props.increaseLike(props.post.id) }}>Like</button>}
         <p>Like: <span>{props.post.likesCount}</span></p>
       </div>

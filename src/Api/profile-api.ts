@@ -1,5 +1,5 @@
 import { ProfileType, PhotosType } from "../types/types"
-import { instance, ResponseType } from "./Api"
+import { instance, APIResponseType } from "./Api"
 
 type SavePhotoResponseDataType = {
     photos: PhotosType
@@ -15,13 +15,13 @@ export const profileApi = {
             .then(res => res.data)
     },
     updateStatus(status: string) {
-        return instance.put<ResponseType>(`profile/status`, { status })
+        return instance.put<APIResponseType>(`profile/status`, { status })
             .then(res => res.data)
     },
-    savePhoto(photoFile: any) {
-        let formData = new FormData;
+    savePhoto(photoFile: File) {
+        let formData = new FormData();
         formData.append("image", photoFile);
-        return instance.put<ResponseType<SavePhotoResponseDataType>>(`profile/photo`, formData, {
+        return instance.put<APIResponseType<SavePhotoResponseDataType>>(`profile/photo`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -29,7 +29,7 @@ export const profileApi = {
             .then(res => res.data)
     },
     saveProfile(profile: ProfileType) {
-        return instance.put(`profile`, profile)
+        return instance.put<APIResponseType>(`profile`, profile)
             .then(res => res.data)
     },
 }

@@ -3,7 +3,7 @@ import Profile from './Profile';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profileReducer';
+import { actions, getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profileReducer';
 import { withAuthRedirect } from '../../hoc/AuthRedirect';
 import { AppStateType } from '../../redux/redux-store';
 import { RouteProps } from 'react-router';
@@ -76,7 +76,7 @@ let mapStateToProps = (state: AppStateType): MapStateProps => ({
 
 export default compose(
     //@ts-ignore
-    connect<MapStateProps, MapDispatchProps, OwnProps, AppStateType>(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
+    connect<MapStateProps, MapDispatchProps, OwnProps, AppStateType>(mapStateToProps, { getUserProfile, getStatus, saveProfile, savePhoto, updateStatus, ...actions }),
     withRouter,
     withAuthRedirect
 )(ProfileContainer);

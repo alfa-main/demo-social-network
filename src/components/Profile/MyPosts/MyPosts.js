@@ -8,7 +8,7 @@ const MyPosts = (props) => {
     post={p}
     key={p.id}
     increaseLike={props.increaseLike}
-    descreaseLike={props.descreaseLike}
+    decreaseLike={props.decreaseLike}
     deletePost={props.deletePost}
   />);
 
