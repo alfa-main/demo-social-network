@@ -3,6 +3,7 @@ import { updateObjectInArray } from "../utils/objectHelpers";
 import { UsersType } from "../types/types";
 import { BaseThunkType, InferActionsTypes } from "./redux-store";
 import { Dispatch } from "react";
+import { AxiosResponse } from "axios";
 
 const FOLLOW = 'usersReducer/FOLLOW';
 const UNFOLLOW = 'usersReducer/UNFOLLOW';
@@ -72,7 +73,7 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialStateT
 export const actions = {
     followSuccess: (userId: number) => ({ type: FOLLOW, userId } as const),
     unfollowSuccess: (userId: number) => ({ type: UNFOLLOW, userId } as const),
-    setUsers: (users: any) => ({ type: SET_USERS, users } as const),
+    setUsers: (users: Array<UsersType>) => ({ type: SET_USERS, users } as const),
     setCurrentPage: (currentPage: number) => ({ type: SET_CURRENT_PAGE, currentPage } as const),
     setTotalUsersCount: (totalUsersCount: number) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount } as const),
     toggleIsFetching: (isFetching: boolean) => ({ type: TOGGLE_IS_FETCHING, isFetching } as const),
@@ -92,7 +93,7 @@ export const requestUsers = (page: number, pageSize: number): ThunkType =>
 
 const _followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>,
     userId: number,
-    apiMethod: any,
+    apiMethod: (usersId: number) => Promise<AxiosResponse<any>>,
     actionCreator: (userId: number) => ActionsTypes
 ) => {
     dispatch(actions.toggleFollowingProgress(true, userId));

@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import s from './CreatePosts.module.css';
 
-const CreatePost = (props) => {
+type CreatePostProps = {
+    newPostText: string
+    newPostTitle: string
+    newPostImage: string
+    addPost: (title: string, message: string, image: string) => void
+    updatePostMessage: (newPostText: string) => void
+    updatePostTitle: (newPostTitle: string) => void
+    updatePostImage: (newPostImage: string) => void
+}
+
+const CreatePost = (props: CreatePostProps) => {
 
     let [filledFields, setfilledFields] = useState(true);
 
-    const addNewPost = (event) => {
+    const addNewPost = (event: React.SyntheticEvent) => {
         event.preventDefault();
         if (props.newPostText.length !== 0 && props.newPostTitle.length !== 0) {
             props.addPost(props.newPostTitle, props.newPostText, props.newPostImage);
@@ -15,15 +25,15 @@ const CreatePost = (props) => {
         }
     }
 
-    const onNewTitleChange = (event) => {
+    const onNewTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         props.updatePostTitle(event.target.value);
     }
 
-    const onNewMessageChange = (event) => {
+    const onNewMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         props.updatePostMessage(event.target.value);
     }
 
-    const onNewImageChange = (event) => {
+    const onNewImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         props.updatePostImage(event.target.value);
     }
 

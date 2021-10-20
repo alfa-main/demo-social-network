@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../hoc/AuthRedirect';
 import { compose } from 'redux';
 import { AppStateType } from '../../redux/redux-store';
-import React from 'react';
+import { InitialStateType } from '../../redux/dialogsReducer';
 
 type MapDispatchProps = {
   
 }
 
 type MapStateProps = {
-  dialogsPage: any
+  dialogsPage: InitialStateType
 }
 
 type OwnProps = {}

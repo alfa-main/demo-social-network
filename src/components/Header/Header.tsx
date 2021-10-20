@@ -5,7 +5,7 @@ import s from './Header.module.css';
 type Props = {
   isAuth: boolean,
   login: string | null,
-  logout: (userId: number) => number
+  logout: () => void
 }
 
 const Header: React.FC<Props> = (props) => {
@@ -16,7 +16,6 @@ const Header: React.FC<Props> = (props) => {
       <div className={s.loginBlock}>
         {
           props.isAuth
-          // @ts-ignore
           ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
           : <NavLink to={'/login'}>Login</NavLink>}
       </div>

@@ -12,13 +12,13 @@ const maxLength50 = maxLengthCreator(50);
 
 type PropsType = {
   dialogsPage: InitialStateType
-  sendMessage: any,
+  sendMessage: any
 }
 
 const Dialogs: React.FC<PropsType> = (props) => {
 
   let state = props.dialogsPage;
-  let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} />);
+  let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={ d.id }/>);
   let messagesElements = state.messages.map(m => <Message message={m.message} key={m.id} />);
 
   let addNewMessage = (values: any) => {

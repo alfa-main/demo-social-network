@@ -17,7 +17,7 @@ const SAVE_PROFILE_SUCCESS = 'PROFILE/SAVE-PROFILE-SUCCESS';
 
 export type InitialStateType = typeof initialState;
 type ActionsTypes = InferActionsTypes<typeof actions>;
-type ThunkType = BaseThunkType<ActionsTypes | FormAction>;
+export type ThunkTypeProfile = BaseThunkType<ActionsTypes | FormAction>;
 
 let initialState = {
     posts: [
@@ -134,31 +134,31 @@ export const actions = {
     saveProfileSuccess: (profile: ProfileType) => ({ type: SAVE_PROFILE_SUCCESS, profile } as const)
 }
 
-export const getUserProfile = (userId: number): ThunkType => async (dispatch) => {
+export const getUserProfile = (userId: number): ThunkTypeProfile => async (dispatch) => {
     let response = await profileApi.getProfile(userId);
     dispatch(actions.setUserProfile(response));
 }
 
-export const getStatus = (userId: number): ThunkType => async (dispatch) => {
+export const getStatus = (userId: number): ThunkTypeProfile => async (dispatch) => {
     let response = await profileApi.getStatus(userId);
     dispatch(actions.setStatus(response));
 }
 
-export const updateStatus = (status: string): ThunkType => async (dispatch) => {
+export const updateStatus = (status: string): ThunkTypeProfile => async (dispatch) => {
     let response = await profileApi.updateStatus(status);
     if (response.resultCode === 0) {
         dispatch(actions.setStatus(status));
     }
 }
 
-export const savePhoto = (file: File): ThunkType => async (dispatch) => {
+export const savePhoto = (file: File): ThunkTypeProfile => async (dispatch) => {
     let response = await profileApi.savePhoto(file);
     if (response.resultCode === 0) {
         dispatch(actions.savePhotoSuccess(response.data.photos));
     }
 }
 
-export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch) => {
+export const saveProfile = (profile: ProfileType): ThunkTypeProfile => async (dispatch) => {
     let response = await profileApi.saveProfile(profile);
     if (response.resultCode === 0) {
         dispatch(actions.saveProfileSuccess(profile));

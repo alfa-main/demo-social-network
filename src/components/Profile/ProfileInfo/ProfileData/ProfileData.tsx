@@ -1,7 +1,18 @@
-import React from 'react';
+import { ProfileType, ContactsType } from '../../../../types/types';
 import s from './ProfileData.module.css';
 
-const ProfileData = ({ profile, isOwner, goToEditMode }) => {
+type ProfileDataProps = {
+    profile: ProfileType
+    isOwner: boolean
+    goToEditMode: () => void
+}
+
+type ContactsProps = {
+    contactTitle: string
+    contactValue: string
+}
+
+const ProfileData: React.FC<ProfileDataProps> = ({ profile, isOwner, goToEditMode }) => {
     return (
         <div className={s.profile_data}>
             <div className={s.profile_item}>
@@ -19,16 +30,21 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
                 <span>About me:</span> {profile.aboutMe}
             </div>
             <div className={s.profile_item}>
-                <span>Contacts:</span> {Object.keys(profile.contacts).filter(key => profile.contacts[key] !== null).map(key => {
-                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
-                })}
+                <span>Contacts:</span>
+                {Object
+                    .keys(profile.contacts)
+                    .filter(key => profile.contacts[key as keyof ContactsType]  !== null)
+                    .map(key => {
+                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]} />
+                    })
+                }
             </div>
             {isOwner && <div><button className={s.profile_edit} onClick={goToEditMode}>Edit</button></div>}
         </div>
     )
 }
 
-const Contact = ({ contactTitle, contactValue }) => {
+const Contact: React.FC<ContactsProps> = ({ contactTitle, contactValue }) => {
     return (
         <div className={s.contact}>{contactTitle}: {contactValue}</div>
     )

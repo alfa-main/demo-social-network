@@ -4,10 +4,10 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 export type ProfileProps = {
-  saveProfile: (profile: ProfileType) => any,
-  savePhoto: (photo: any) => void,
+  saveProfile: (profile: ProfileType) => Promise<any>,
+  savePhoto: (file: File) => Promise<any>,
   isOwner: boolean,
-  profile: ProfileType,
+  profile: ProfileType | null,
   statusUser: string,
   updateStatus: (status: string) => void
 }

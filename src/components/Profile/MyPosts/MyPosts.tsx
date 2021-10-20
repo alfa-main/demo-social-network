@@ -1,9 +1,23 @@
-import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import CreatePost from './CreatePosts/CreatePosts';
+import { PostType } from '../../../types/types';
 
-const MyPosts = (props) => {
+export type MyPostsProps = {
+  increaseLike: (postId: number) => void
+  decreaseLike: (postId: number) => void
+  deletePost: (postId: number) => void
+  addPost: (title: string, message: string, image: string) => void
+  updatePostMessage: (newPostText: string) => void
+  updatePostTitle: (newPostTitle: string) => void
+  updatePostImage: (newPostImage: string) => void
+  posts: Array<PostType>,
+  newPostText: string,
+  newPostTitle: string,
+  newPostImage: string
+}
+
+const MyPosts = (props: MyPostsProps) => {
   let postsElements = props.posts.slice().reverse().map(p => <Post
     post={p}
     key={p.id}
