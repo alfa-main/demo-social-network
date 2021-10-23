@@ -19,7 +19,7 @@ const Profile: React.FC<ProfileProps> = ({
   profile,
   statusUser,
   updateStatus }) => {
-  
+
   return (
     <div>
       <ProfileInfo
@@ -30,7 +30,7 @@ const Profile: React.FC<ProfileProps> = ({
         statusUser={statusUser}
         updateStatus={updateStatus}
       />
-      <MyPostsContainer />
+      {isOwner && <MyPostsContainer />}
     </div>
   );
 }

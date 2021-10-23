@@ -1,3 +1,5 @@
+import { Button, Row } from 'antd';
+import Text from 'antd/lib/typography/Text';
 import { ProfileType, ContactsType } from '../../../../types/types';
 import s from './ProfileData.module.css';
 
@@ -16,37 +18,46 @@ const ProfileData: React.FC<ProfileDataProps> = ({ profile, isOwner, goToEditMod
     return (
         <div className={s.profile_data}>
             <div className={s.profile_item}>
-                <span>Fullname:</span> {profile.fullName}
+                <Text strong>
+                    Fullname: <Text italic className={s.textData}>{profile.fullName}</Text>
+                </Text>
             </div>
             <div className={s.profile_item}>
-                <span>Looking for a job:</span> {profile.lookingForAJob ? "yes" : "no"}
+                <Text strong>
+                    Looking for a job: <Text italic className={s.textData}>{profile.lookingForAJob ? "yes" : "no"}</Text>
+                </Text>
             </div>
             {profile.lookingForAJob &&
                 <div className={s.profile_item}>
-                    <span>My professional skills:</span> {profile.lookingForAJobDescription}
+                    <Text strong>
+                        My professional skills: <Text italic className={s.textData}>{profile.lookingForAJobDescription}</Text>
+                    </Text>
                 </div>
             }
             <div className={s.profile_item}>
-                <span>About me:</span> {profile.aboutMe}
+                <Text strong>
+                    About me:<Text italic className={s.textData}> {profile.aboutMe}</Text>
+                </Text>
             </div>
             <div className={s.profile_item}>
-                <span>Contacts:</span>
+                <Text strong>Contacts:
                 {Object
-                    .keys(profile.contacts)
-                    .filter(key => profile.contacts[key as keyof ContactsType]  !== null)
-                    .map(key => {
-                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]} />
-                    })
-                }
+                        .keys(profile.contacts)
+                        .filter(key => profile.contacts[key as keyof ContactsType] !== null)
+                        .map(key => {
+                            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]} />
+                        })
+                    }
+                </Text>
             </div>
-            {isOwner && <div><button className={s.profile_edit} onClick={goToEditMode}>Edit</button></div>}
+            {isOwner && <Button type="primary" className={s.profile_edit} onClick={goToEditMode}>Edit</Button>}
         </div>
     )
 }
 
 const Contact: React.FC<ContactsProps> = ({ contactTitle, contactValue }) => {
     return (
-        <div className={s.contact}>{contactTitle}: {contactValue}</div>
+        <Row className={s.contact}>{contactTitle}: {contactValue}</Row>
     )
 }
 

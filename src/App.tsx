@@ -14,6 +14,10 @@ import Preloader from './components/Common/Preloader/Preloader';
 import Other from './components/Other/Other';
 import { AppStateType } from './redux/redux-store';
 
+import 'antd/dist/antd.css';
+import { Layout } from 'antd';
+const { Header, Sider, Content } = Layout;
+
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const Login = React.lazy(() => import('./Login/Login'));
@@ -42,25 +46,39 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
       return <Preloader />
     }
     return (
-      <div className="app__wrapper">
-        <HeaderContainer />
-        <Nav />
-        <div className="app__wrapper-content">
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/profile" />
-            </Route>
-            <Route path="/profile/:userId?" render={() => <React.Suspense fallback={<Preloader />}><ProfileContainer /></React.Suspense>} />
-            <Route path="/dialogs" render={() => <React.Suspense fallback={<Preloader />}><DialogsContainer /></React.Suspense>} />
-            <Route exact path="/news" component={News} />
-            <Route exact path="/music" component={Music} />
-            <Route exact path="/users" render={() => <UsersContainer />} />
-            <Route exact path="/settings" component={Settings} />
-            <Route path="/login" render={() => <React.Suspense fallback={<Preloader />}><Login /></React.Suspense>} />
-            <Route path="*" render={() => <Other />} />
-          </Switch>
-        </div>
-      </div >
+      <Layout>
+        <Sider trigger={null} collapsible>
+          <Nav />
+        </Sider>
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{ padding: 0 }}>
+            <HeaderContainer />
+          </Header>
+          <Content
+            // className="site-layout-background"
+            style={{
+              // margin: '24px 16px',
+              padding: '24px 16px',
+              minHeight: 280,
+              // backgroundColor: '#1890ff'
+            }}
+          >
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/profile" />
+              </Route>
+              <Route path="/profile/:userId?" render={() => <React.Suspense fallback={<Preloader />}><ProfileContainer /></React.Suspense>} />
+              <Route path="/dialogs" render={() => <React.Suspense fallback={<Preloader />}><DialogsContainer /></React.Suspense>} />
+              <Route exact path="/news" component={News} />
+              <Route exact path="/music" component={Music} />
+              <Route exact path="/users" render={() => <UsersContainer />} />
+              <Route exact path="/settings" component={Settings} />
+              <Route path="/login" render={() => <React.Suspense fallback={<Preloader />}><Login /></React.Suspense>} />
+              <Route path="*" render={() => <Other />} />
+            </Switch>
+          </Content>
+        </Layout>
+      </Layout>
     );
   }
 }

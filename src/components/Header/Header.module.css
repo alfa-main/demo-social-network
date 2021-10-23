@@ -1,21 +1,10 @@
-.header{
-  max-width: 1200px;
-  width: 100%;
-  background-color: #1c1e21;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  z-index: 200;
-}
-
-.header img{
+.logo {
   width: 50px;
   margin: 5px 0px 0px 20px;
 }
 
-.loginBlock {
-  color: #ccc;
+.userLogin span {
+  color: #fff !important;
   font-size: 18px;
 }
 

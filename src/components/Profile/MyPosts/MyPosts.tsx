@@ -2,6 +2,7 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import CreatePost from './CreatePosts/CreatePosts';
 import { PostType } from '../../../types/types';
+import { Typography } from 'antd';
 
 export type MyPostsProps = {
   increaseLike: (postId: number) => void
@@ -37,8 +38,8 @@ const MyPosts = (props: MyPostsProps) => {
         updatePostTitle={props.updatePostTitle}
         updatePostImage={props.updatePostImage}
       />
-      <div className={s.posts}>
-        <h2>My posts</h2>
+      <div>
+        <Typography.Title className={s.posts_title}>My posts</Typography.Title>
         {postsElements}
       </div>
     </div>

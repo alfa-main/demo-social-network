@@ -1,10 +1,8 @@
-import preloader from '../../../assets/img/preloader.gif';
+import { Spin } from 'antd';
 import s from './Preloader.module.css';
 
 let Preloader: React.FC = () => {
-    return <div className={s.preloader}>
-        <img src={preloader} alt={preloader} />
-    </div>
+    return <Spin size={'large'} className={s.preloader} />
 }
 
 export default Preloader;

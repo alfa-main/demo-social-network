@@ -1,6 +1,5 @@
 .profile_data {
     margin-left: 20px;
-    color: #fff;
 }
 
 .profile_item {
@@ -8,9 +7,11 @@
 }
 
 .profile_item span {
-    font-weight: bold;
     font-size: 18px;
-    color: #c0c0c0;
+}
+
+.textData {
+    color:rgba(40,40,40, 0.5);
 }
 
 .contact {
@@ -19,11 +20,9 @@
 }
 
 .profile_edit {
-    display: block;
     margin: 10px 0 0 10px;
     width: 70px;
-    line-height: 30px;
-    border-radius: 10px;
+    border-radius: 10px; 
 }
 
 @media (max-width: 789px) {

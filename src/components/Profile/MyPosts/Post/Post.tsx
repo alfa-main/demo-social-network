@@ -1,3 +1,6 @@
+import { DislikeOutlined, LikeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Image, Row } from 'antd';
+import Meta from 'antd/lib/card/Meta';
 import { PostType } from '../../../../types/types';
 import s from './Post.module.css';
 
@@ -16,30 +19,28 @@ const Post = (props: PostProps) => {
   }
 
   return (
-    <div className={s.post}>
-      <div className={s.post_img}>
-        {props.post.image.match(validateUrlImg) === null ?
-          <img src={props.post.image} alt="img post" className="hide" /> :
-          <img src={props.post.image} alt="img post" />
-        }
-      </div>
-
-      <div className={s.post_title}>
-        <h4>{props.post.title}</h4>
-      </div>
-
-      <div className={s.post_message}>
-        <p>{props.post.message}</p>
-      </div>
-
-      <div className={s.post_likes}>
-        {props.post.liked ?
-          <button className={s.background_red} onClick={() => { props.decreaseLike(props.post.id) }}>Like</button> :
-          <button onClick={() => { props.increaseLike(props.post.id) }}>Like</button>}
-        <p>Like: <span>{props.post.likesCount}</span></p>
-      </div>
-      <button className={s.post_delete} onClick={onDelPost}>Delete post</button>
-    </div>
+    <Card
+      hoverable
+      style={{ width: 500, marginBottom: '20px' }}
+      cover={
+        props.post.image.match(validateUrlImg) !== null
+          ? <Image alt="example" src={props.post.image} />
+          : <div></div>
+      }
+    >
+      <Meta title={props.post.title} description={props.post.message} style={{ paddingBottom: '20px' }} />
+      <Row className={s.post_likes}>
+        <Col span={18}>
+          {props.post.liked ?
+            <LikeOutlined onClick={() => { props.decreaseLike(props.post.id) }} style={{ color: 'red', fontSize: '20px' }} /> :
+            <LikeOutlined onClick={() => { props.increaseLike(props.post.id) }} style={{ fontSize: '20px' }} />}
+        </Col>
+        <Col span={6}>
+          <p>Like: <span>{props.post.likesCount}</span></p>
+        </Col>
+      </Row>
+      <Button danger type={'primary'} onClick={onDelPost}>Delete post</Button>
+    </Card>
   );
 }
 
