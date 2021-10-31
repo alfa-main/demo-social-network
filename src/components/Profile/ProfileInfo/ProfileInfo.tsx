@@ -32,7 +32,7 @@ const ProfileInfo: React.FC<ProfileProps> = ({ profile, updateStatus, statusUser
   }
   return (
     <Row>
-      <Col span={12}>
+      <Col span={12} className={s.flex_container}>
         <Row>
           <Image src={profile.photos.large || userPhoto} alt='large' width={270} />
         </Row>

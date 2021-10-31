@@ -1,10 +1,14 @@
+
+
 .description_block {
   padding: 10px;
 }
 
 .flex_container {
   display: flex;
-  justify-content: space-evenly
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .description_container {
